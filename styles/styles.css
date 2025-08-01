@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --amarillo: #FFDA00;
+  --azul: #0033A0;
+  --rojo: #C8102E;
+  --blanco: #FFFFFF;
+  --negro: #333333;
+  --gris-claro: #f8f9fa;
+  --gris-oscuro: #495057;
+  --sombra-suave: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --sombra-fuerte: 0 15px 40px rgba(0, 0, 0, 0.2);
+  --borde-radio: 12px;
+  --transicion: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--gris-claro);
+  color: var(--negro);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, var(--azul), #001f60);
+  color: var(--blanco);
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--sombra-suave);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo figure {
+  background: linear-gradient(135deg, var(--amarillo), var(--rojo));
+  color: var(--blanco);
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.logo p {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--blanco);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  position: relative;
+}
+
+nav a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  transition: var(--transicion);
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: var(--amarillo);
+  transition: var(--transicion);
+}
+
+nav a:hover {
+  color: var(--amarillo);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Sección principal */
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 80px;
+}
+
+section {
+  margin-bottom: 6rem;
+  border-radius: var(--borde-radio);
+  overflow: hidden;
+  transition: var(--transicion);
+}
+
+section:not(.hero) {
+  background-color: var(--blanco);
+  box-shadow: var(--sombra-suave);
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+section:not(.hero):hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-fuerte);
+}
+
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--blanco);
+  margin-bottom: 4rem;
+  padding: 0;
+  background: url('../assets/colombia-paisaje.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+  z-index: 1;
+}
+
+.hero h1, .hero p {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero p {
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  font-weight: 300;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+/* Secciones */
+.event-details, .theme-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 3rem;
+}
+
+.event-details article, .theme-section article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.event-details figure, .theme-section figure, .food-gallery figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--borde-radio);
+  box-shadow: var(--sombra-suave);
+}
+
+.event-details img, .theme-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transicion);
+  filter: brightness(0.95);
+}
+
+.event-details img:hover, .theme-section img:hover, .food-gallery img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.food-gallery figcaption {
+  text-align: center;
+  padding: 0.8rem;
+  background: linear-gradient(90deg, var(--azul), var(--rojo));
+  color: var(--blanco);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+address {
+  margin-top: 1rem;
+  font-style: normal;
+  color: var(--azul);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 51, 160, 0.1);
+  border-radius: 30px;
+  font-size: 0.9rem;
+}
+
+/* Sección de regalos */
+.gift-section {
+  padding: 3rem;
+  background: linear-gradient(135deg, var(--blanco), var(--gris-claro));
+}
+
+.gift-section h2, .food-section h2 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.gift-section h2 {
+  color: var(--azul);
+}
+
+.gift-section h2::after, .food-section h2::after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  bottom: -10px;
+  background: linear-gradient(90deg, var(--amarillo), var(--rojo));
+  border-radius: 2px;
+}
+
+.gift-section h2::after {
+  width: 50%;
+  left: 0;
+}
+
+.gift-list {
+  margin: 2.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.gift-list li {
+  background-color: var(--blanco);
+  padding: 1.2rem;
+  border-radius: var(--borde-radio);
+  box-shadow: var(--sombra-suave);
+  transition: var(--transicion);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.gift-list li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--amarillo), var(--rojo));
+  transition: var(--transicion);
+  z-index: -1;
+}
+
+.gift-list li:hover {
+  transform: translateY(-5px) translateX(5px);
+  box-shadow: var(--sombra-fuerte);
+}
+
+.gift-list li:hover::before {
+  width: 100%;
+  opacity: 0.1;
+}
+
+/* Sección de comida */
+.food-section {
+  padding: 3rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--blanco), #fff5e6);
+}
+
+.food-section h2 {
+  color: var(--rojo);
+}
+
+.food-section h2::after {
+  width: 50%;
+  left: 25%;
+}
+
+.food-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.food-gallery figure {
+  height: 100%;
+  transition: var(--transicion);
+}
+
+.food-gallery figure:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--sombra-fuerte);
+}
+
+.food-gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: var(--transicion);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, var(--azul), #001f60);
+  color: var(--blanco);
+  text-align: center;
+  padding: 3rem 5%;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--amarillo), var(--rojo), var(--azul));
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+/* Estilos Generales */
+h1, h2 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+strong {
+  font-weight: 600;
+  color: var(--rojo);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos responsivos */
+@media (max-width: 992px) {
+  .event-details, .theme-section {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+  
+  .gift-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 5%;
+  }
+  
+  .logo figure {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .logo p {
+    font-size: 1rem;
+  }
+  
+  nav ul {
+    gap: 1rem;
+  }
+  
+  nav a {
+    font-size: 0.9rem;
+  }
+  
+  .food-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  header {
+    flex-direction: column;
+    padding: 1rem 5%;
+  }
+  
+  nav {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  section:not(.hero) {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+  
+  .event-details, .theme-section, .gift-section, .food-section {
+    padding: 1.5rem;
+  }
+  
+  .gift-list {
+    grid-template-columns: 1fr;
+  }
+}
+.event-details .content, .theme-section .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
